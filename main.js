@@ -2,7 +2,6 @@
 let displayValue = '';
 let firstNumber = null;
 let operator = null;
-let newNumberStarted = false;
 
 function handleButtonClick(value) {
     if (value === 'C') {

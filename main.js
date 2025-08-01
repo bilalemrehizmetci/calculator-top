@@ -1,27 +1,54 @@
-let input = '';
+
+let displayValue = '';
+let firstNumber = null;
+let operator = null;
+let newNumberStarted = false;
 
 function handleButtonClick(value) {
     if (value === 'C') {
-        input = '';
-        updateDisplay();
-    } else if (value === '=') {
+        displayValue = '';
+        firstNumber = null;
+        operator = null;
+        newNumberStarted = false;
+    }
+    else if (!isNaN(value)) {
+        if (displayValue.length < 10) {
+            displayValue += value;
+            if (operator === null) {
+                firstNumber = parseFloat(displayValue);
+            }
+        }
+    }
+    else if (['+', '-', '*', '/'].includes(value)) {
+        displayValue += value;
+        operator = value;
+    }
+    else if (value === '=') {
         try {
-            input = eval(input).toString();
+            let result = eval(displayValue);
+            displayValue = result.toString().slice(0, 10);
+            firstNumber = parseFloat(result);
+            operator = null;
         } catch {
-            input = 'Error';
+            displayValue = 'Error';
         }
-        updateDisplay();
-    } else {
-        if (input.length < 10) {
-            input += value;
-            updateDisplay();
-        }
+    }
+    updateDisplay();
+}
+
+function calculate(a, b, op) {
+    switch (op) {
+        case '+': return a + b;
+        case '-': return a - b;
+        case '*': return a * b;
+        case '/': return b === 0 ? 'Error' : a / b;
+        default: return 'Error';
     }
 }
 
 function updateDisplay() {
     const display = document.getElementById('display');
-    display.value = input || '0';
+    display.value = displayValue || '0';
 }
 
 document.addEventListener('DOMContentLoaded', () => {

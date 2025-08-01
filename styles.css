@@ -1,37 +1,95 @@
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
-    padding: 10px;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
     justify-content: center;
+    background: linear-gradient(135deg, #4b6cb7, #182848);
 }
 
 .calculator {
-    width: 400px;
-    margin: 0 auto;
+    width: 320px;
     padding: 20px;
-    border: 1px solid #ccc;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+#display {
+    width: 100%;
+    height: 60px;
+    margin-bottom: 20px;
+    background-color: #f8f9fa;
+    border: none;
     border-radius: 10px;
-    background-color: #f9f9f9;
-    display: block;
+    font-size: 28px;
+    text-align: right;
+    padding: 10px;
+    color: #333;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .buttons {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
+    gap: 12px;
 }
 
-h1 {
-    display: block;
-    text-align: center;
+.btn {
+    padding: 15px;
+    font-size: 20px;
+    border: none;
+    background-color: #fff;
+    cursor: pointer;
+    border-radius: 12px;
+    transition: all 0.2s ease;
     color: #333;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-#display {
-    width: 100%;
-    height: 40px;
-    font-size: 24px;
-    text-align: right;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+.btn:hover {
+    background-color: #f0f0f0;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.operator {
+    background-color: #4b6cb7;
+    color: white;
+}
+
+.operator:hover {
+    background-color: #3b5998;
+}
+
+.btn[data-value="="] {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn[data-value="="]:hover {
+    background-color: #218838;
+}
+
+.btn[data-value="C"] {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn[data-value="C"]:hover {
+    background-color: #c82333;
 }
